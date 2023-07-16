@@ -13,6 +13,20 @@
   background-position: center;
   background-size: cover;
 }
+.createRoom .back {
+  position: absolute;
+  right: 90%;
+  top: 51px;
+}
+
+.createRoom .back .material-symbols-outlined {
+  font-size: 40px;
+}
+
+.createRoom .back .material-symbols-outlined:hover {
+  font-size: 45px;
+  color: white;
+}
 .createRoom .chooseMap {
   position: relative;
   margin-bottom: 50px;

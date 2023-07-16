@@ -3,7 +3,7 @@ import boards from "../../boards";
 import axios from "axios";
 import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 
 const CreateRoom = () => {
@@ -44,17 +44,25 @@ const CreateRoom = () => {
   return (
     <>
       <div className="createRoom">
+        <Link to="/" className="back">
+          <span class="material-symbols-outlined">arrow_back</span>
+        </Link>
         <ToastContainer />
         <h2 className="chooseMap">Choose a map</h2>
         <div onChange={onChangeRadio} className="mapsContainer">
-        {boards.map((b,index)=>
-          <div className="map" key={index}>
-            <input class="input-hidden" type="radio" id = {`${index+1}`} name="board" />
-            <label htmlFor={`${index+1}`}>
-              <img src={b} alt="" />
-            </label>
-          </div>
-          )}
+          {boards.map((b, index) => (
+            <div className="map" key={index}>
+              <input
+                class="input-hidden"
+                type="radio"
+                id={`${index + 1}`}
+                name="board"
+              />
+              <label htmlFor={`${index + 1}`}>
+                <img src={b} alt="" />
+              </label>
+            </div>
+          ))}
           {/* <div className="map">
             <input class="input-hidden" type="radio" id="1" name="board" />
             <label htmlFor="1">
