@@ -114,10 +114,10 @@ function Game() {
           (a) => Number(a.position) === 100
         );
         setMsg(`${W.name} HAS WON !`);
-      } else {
+      } else{
         setMsg(
           `It's ${
-            gameObject.players[gameObject.pending_player_index].name
+            gameObject.players[gameObject.pending_player_index]?.name
           }'s turn`
         );
       }

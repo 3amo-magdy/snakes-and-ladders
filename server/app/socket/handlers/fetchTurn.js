@@ -53,7 +53,7 @@ const fetchTurn = async (game_id) => {
         (p) => (p.id === currentPlayer)
     )
     if(pending_player_index==-1){
-        last_player_index = 0
+        pending_player_index = 0
     }
 
     const g = {

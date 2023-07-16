@@ -206,7 +206,7 @@ const makeMove = async (game_id, user, io, force = false) => {
     if (last_player_index == -1) {
       last_player_index = 0
     }
-    if (last_player_index == -1) {
+    if(next_player_index==-1){
       next_player_index = 0
     }
 
