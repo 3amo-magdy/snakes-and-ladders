@@ -75,7 +75,12 @@ const JoinRoom = () => {
         <ToastContainer />
         <h2 className="chooseRoom">Join a game</h2>
         <div className="mapsContainer">
-          {games.length !== 0 &&
+          {games.length === 0 ? (
+            <div className="noGames">
+              OOPS!! No available rooms at the moment 🥺
+            </div>
+          ) : (
+            games.length !== 0 &&
             games.map((G) => (
               <div className="map" key={G?.Id}>
                 <input
@@ -90,7 +95,8 @@ const JoinRoom = () => {
                 </label>
                 <span>{`players joined ${G?.playersNumber}/${G?.capacity}`}</span>
               </div>
-            ))}
+            ))
+          )}
         </div>
         <button onClick={handleClick}>Join</button>
       </div>

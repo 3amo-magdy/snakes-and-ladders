@@ -30,6 +30,12 @@
   gap: 20px;
   width: 50%;
 }
+.createRoom .mapsContainer .noGames {
+  position: relative;
+  bottom: 80px;
+  font-size: 25px;
+}
+
 .createRoom .mapsContainer .map {
   position: relative;
   bottom: 80px;

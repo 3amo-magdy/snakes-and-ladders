@@ -53,7 +53,7 @@ const Register = () => {
             <p className="text">
               Join the fun! Create your account and get ready to experience the
               thrill of playing Snakes and Ladders with friends and opponents
-              from around the world.
+              from around the world. (if u can see this, fork sync works!)
             </p>
             <span className="log">Do you have an account?</span>
             <Link to="/login">
