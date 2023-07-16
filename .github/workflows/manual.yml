@@ -17,7 +17,6 @@ jobs:
     steps:
       - uses: tgymnich/fork-sync@v1.8
         with:
-          owner: llvm
-          base: master
-          head: master
+          base: main
+          head: main
 
