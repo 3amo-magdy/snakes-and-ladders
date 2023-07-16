@@ -18,6 +18,7 @@ jobs:
       - uses: tgymnich/fork-sync@v1.8
         with:
           owner: zeezooX
+          token: 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
           base: main
           head: main
 
