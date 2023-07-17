@@ -214,7 +214,7 @@ function Game() {
           ) {
             gameObject.players[player_index].position = to;
           }
-          drawCanvas(game);
+          drawCanvas(gameObject);
         }, 1000);
       }
     } else {
@@ -222,7 +222,7 @@ function Game() {
         drawCanvas(game);
       }
     }
-  }, [game]);
+  }, [game, turnUpdate]);
 
   let drawCanvas = (game) => {
     if (!game) {
