@@ -24,6 +24,7 @@ function Game() {
   let [lastPlayTime, setLastPlayTime] = useState(Date.now());
   let [timer, setTimer] = useState(Date.now());
   let [game, setGame] = useState(null);
+  let [gameUpdate, setGameUpdate] = useState(null);
 
   useEffect(() => {
     const headers = {
@@ -121,9 +122,16 @@ function Game() {
           }'s turn`
         );
       }
-      setGame(gameObject);
+      setGameUpdate(gameObject);
+      return gameObject;
     }
   };
+
+  useEffect(()=>{
+    if(gameUpdate){
+      setGame(gameUpdate);
+    }
+  },[gameUpdate])
 
   function rollDice(elComeOut) {
     var elDiceOne = diceRef?.current;
