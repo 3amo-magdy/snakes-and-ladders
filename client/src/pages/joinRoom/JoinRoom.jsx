@@ -14,6 +14,9 @@ const JoinRoom = () => {
 
   const [games, setGames] = useState([]);
   const [gameId, setGameId] = useState(-1);
+  const headers = {
+    "x-access-token": sessionStorage.getItem("authenticated"),
+  };
   useEffect(() => {
     axios
       .get(`/retrieveGames?status=pending`, { headers: headers })
