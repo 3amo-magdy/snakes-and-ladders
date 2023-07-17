@@ -26,6 +26,7 @@ function Game() {
   let [game, setGame] = useState(null);
   let [gameUpdate, setGameUpdate] = useState(null);
 
+  window.reload();
   useEffect(() => {
     const headers = {
       "x-access-token": sessionStorage.getItem("authenticated"),
