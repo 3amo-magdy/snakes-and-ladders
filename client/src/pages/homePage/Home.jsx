@@ -16,7 +16,9 @@ const Home = () => {
     };
     axios.get(`/currentGame`, { headers: headers }).then((res) => {
       console.log("RESPONSE RECEIVED: ", res);
-      navigate("/game")
+      // navigate("/game")
+      window.reload()
+
     })
     .catch((err) => {
       console.log("AXIOS ERROR: ", err);
