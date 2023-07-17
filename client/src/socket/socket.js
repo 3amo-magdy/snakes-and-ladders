@@ -16,6 +16,11 @@ export const subscribeToRoom = (gameId, turnUpdate, roomUpdate) => {
       socket.on("turn-update", turnUpdate);
     });
   });
+  socket.on("disconnect", () => {
+    console.log("disconnected");
+    roomUpdate("Bye bye");
+    socket.emit("leave-game", gameId);
+  });
   socket.connect();
 };
 

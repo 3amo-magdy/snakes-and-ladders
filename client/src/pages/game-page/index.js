@@ -42,6 +42,10 @@ function Game() {
         console.log("AXIOS ERROR: ", err);
         navigate("/");
       });
+
+      return ()=>{
+        io.socket.disconnect();
+      }
   }, []);
 
   useEffect(() => {
