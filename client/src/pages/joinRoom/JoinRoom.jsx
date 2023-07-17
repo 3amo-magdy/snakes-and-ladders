@@ -19,8 +19,8 @@ const JoinRoom = () => {
       .get(`/retrieveGames?status=pending`, { headers: headers })
       .then((res) => {
         console.log("RESPONSE RECEIVED: ", res);
+        console.log(res.data == games);
         setGames(res.data);
-        console.log(games);
       })
       .catch((err) => {
         console.log("AXIOS ERROR: ", err);
