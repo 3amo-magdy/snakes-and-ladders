@@ -24,26 +24,34 @@ const App = () => {
     if (!sessionStorage.getItem("authenticated")) {
       console.log(sessionStorage.getItem("authenticated"));
       return <Navigate to="/login" />;
-    } else return children;
+    } else {return children;}
   };
   const OngoingGame = ({ children }) => {
-    if (isGaming) return <Navigate to="/game" />;
-    return children;
+    fetchGame().then(()=>{
+      setIsGaming(true);
+      return <Navigate to="/game" />
+    })
+    .catch((err)=>{
+        console.log("AXIOS ERROR: ", err);
+        setIsGaming(false);
+        return children;
+    })
   };
-  useEffect(() => {
+  const fetchGame = ()=>{
     const headers = {
       "x-access-token": sessionStorage.getItem("authenticated"),
     };
-    axios
-      .get(`/currentGame`, { headers: headers })
-      .then((res) => {
-        console.log("RESPONSE RECEIVED: ", res);
-        setIsGaming(true);
-      })
-      .catch((err) => {
-        console.log("AXIOS ERROR: ", err);
-        setIsGaming(false);
-      });
+    return axios.get(`/currentGame`, { headers: headers })
+  }
+  useEffect(() => {
+    fetchGame().then((res) => {
+      console.log("RESPONSE RECEIVED: ", res);
+      setIsGaming(true);
+    })
+    .catch((err) => {
+      console.log("AXIOS ERROR: ", err);
+      setIsGaming(false);
+    });
   }, []);
   return (
     <HashRouter>
