@@ -1,9 +1,11 @@
 import "./Login.css";
-import { Link, useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
 const Login = () => {
   const navigate = useNavigate();
   const [person, setPerson] = useState({
@@ -15,20 +17,6 @@ const Login = () => {
     user[e.target.id] = e.target.value;
     setPerson(user);
   };
-
-  useEffect(() => {
-    const headers = {
-      "x-access-token": sessionStorage.getItem("authenticated"),
-    };
-    axios.get(`/currentGame`, { headers: headers }).then((res) => {
-      console.log("RESPONSE RECEIVED: ", res);
-      navigate("/game")
-    })
-    .catch((err) => {
-      console.log("AXIOS ERROR: ", err);
-    });
-  }, []);
-
 
   const handleSubmit = (e) => {
     if (person.userName && person.password) {

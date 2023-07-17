@@ -1,6 +1,5 @@
-import { Link, useNavigate, useEffect } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Home.css";
-import axios from "axios";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -9,21 +8,6 @@ const Home = () => {
     sessionStorage.clear();
     navigate("/login");
   };
-
-  useEffect(() => {
-    const headers = {
-      "x-access-token": sessionStorage.getItem("authenticated"),
-    };
-    axios.get(`/currentGame`, { headers: headers }).then((res) => {
-      console.log("RESPONSE RECEIVED: ", res);
-      // navigate("/game")
-      window.reload()
-
-    })
-    .catch((err) => {
-      console.log("AXIOS ERROR: ", err);
-    });
-  }, []);
   return (
     <>
       <div className="homeContainer">
