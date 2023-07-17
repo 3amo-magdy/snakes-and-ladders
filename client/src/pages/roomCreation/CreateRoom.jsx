@@ -35,8 +35,7 @@ const CreateRoom = () => {
       .post(`/createGame`, data, { headers: headers })
       .then((res) => {
         console.log("RESPONSE RECEIVED: ", res);
-        // navigate("/game");
-        window.reload();
+        navigate("/game");
       })
       .catch((err) => {
         console.log("AXIOS ERROR: ", err);

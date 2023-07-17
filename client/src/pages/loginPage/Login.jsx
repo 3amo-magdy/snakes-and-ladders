@@ -26,8 +26,7 @@ const Login = () => {
           if (Isvalid?.data) {
             sessionStorage.setItem("authenticated", Isvalid?.data.token);
             sessionStorage.setItem("username", person.userName);
-            // navigate(`/`);
-            window.reload();
+            navigate(`/`);
             e.preventDefault();
           } else {
             alert("Wrong credentials");

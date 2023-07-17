@@ -54,8 +54,7 @@ const JoinRoom = () => {
             )
             .then((res) => {
               console.log("RESPONSE RECEIVED: ", res);
-              // navigate("/game");
-              window.reload();
+              navigate("/game");
             })
             .catch((err) => {
               console.log("AXIOS ERROR: ", err);
