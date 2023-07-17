@@ -42,6 +42,12 @@ function Game() {
         console.log("AXIOS ERROR: ", err);
         navigate("/");
       });
+
+      return ()=>{
+        if (io.socket.connected){
+          io.socket.disconnect();
+        }
+      }
   }, []);
 
   useEffect(() => {
@@ -208,7 +214,7 @@ function Game() {
           ) {
             gameObject.players[player_index].position = to;
           }
-          drawCanvas(gameObject);
+          drawCanvas(game);
         }, 1000);
       }
     } else {
@@ -216,7 +222,7 @@ function Game() {
         drawCanvas(game);
       }
     }
-  }, [game, turnUpdate]);
+  }, [game]);
 
   let drawCanvas = (game) => {
     if (!game) {
