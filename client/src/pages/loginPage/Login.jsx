@@ -16,14 +16,11 @@ const Login = () => {
     setPerson(user);
   };
 
-  const fetchGame = ()=>{
+  useEffect(() => {
     const headers = {
       "x-access-token": sessionStorage.getItem("authenticated"),
     };
-    return axios.get(`/currentGame`, { headers: headers })
-  }
-  useEffect(() => {
-    fetchGame().then((res) => {
+    axios.get(`/currentGame`, { headers: headers }).then((res) => {
       console.log("RESPONSE RECEIVED: ", res);
       navigate("/game")
     })

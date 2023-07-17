@@ -41,14 +41,12 @@ const CreateRoom = () => {
         console.log("AXIOS ERROR: ", err);
       });
   };
-  const fetchGame = ()=>{
+
+  useEffect(() => {
     const headers = {
       "x-access-token": sessionStorage.getItem("authenticated"),
     };
-    return axios.get(`/currentGame`, { headers: headers })
-  }
-  useEffect(() => {
-    fetchGame().then((res) => {
+    return axios.get(`/currentGame`, { headers: headers }).then((res) => {
       console.log("RESPONSE RECEIVED: ", res);
       navigate("/game")
     })
