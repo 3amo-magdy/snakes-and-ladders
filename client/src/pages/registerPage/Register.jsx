@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+import { useEffect } from "react";
+
 const Register = () => {
   const navigate = useNavigate();
   const [person, setPerson] = useState({
@@ -42,7 +44,24 @@ const Register = () => {
       e.preventDefault();
     }
   };
-  console.log(person);
+
+
+  const fetchGame = ()=>{
+    const headers = {
+      "x-access-token": sessionStorage.getItem("authenticated"),
+    };
+    return axios.get(`/currentGame`, { headers: headers })
+  }
+  useEffect(() => {
+    fetchGame().then((res) => {
+      console.log("RESPONSE RECEIVED: ", res);
+      navigate("/game")
+    })
+    .catch((err) => {
+      console.log("AXIOS ERROR: ", err);
+    });
+  }, []);
+
   return (
     <>
       <div className="Register">

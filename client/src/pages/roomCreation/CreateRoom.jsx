@@ -1,7 +1,7 @@
 import "./CreateRoom.css";
 import boards from "../../boards";
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { useNavigate, Link } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
@@ -41,6 +41,22 @@ const CreateRoom = () => {
         console.log("AXIOS ERROR: ", err);
       });
   };
+  const fetchGame = ()=>{
+    const headers = {
+      "x-access-token": sessionStorage.getItem("authenticated"),
+    };
+    return axios.get(`/currentGame`, { headers: headers })
+  }
+  useEffect(() => {
+    fetchGame().then((res) => {
+      console.log("RESPONSE RECEIVED: ", res);
+      navigate("/game")
+    })
+    .catch((err) => {
+      console.log("AXIOS ERROR: ", err);
+    });
+  }, []);
+
   return (
     <>
       <div className="createRoom">
