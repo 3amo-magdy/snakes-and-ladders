@@ -112,7 +112,7 @@ app.get("/retrieveGames", auth, handleRetrieveGames);
 
 app.get("/getGame", auth, handleGetGame);
 app.post("/joinGame", auth, handleJoinGame);
-app.post("/leaveGame", auth, handleLeaveGame(socketIO));
+app.post("/leaveGame", auth, handleLeaveGame);
 app.post("/createGame", auth, handleCreateGame);
 app.get("/currentGame", auth, handleCurrentGame);
 const db = require("./app/models");
