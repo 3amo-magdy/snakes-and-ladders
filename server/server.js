@@ -43,6 +43,17 @@ socketIO.use(socketAuth).on("connection", (socket) => {
       socket.in(`team-C room-` + `${gameId}`).emit("room-update", data);
     });
   });
+
+  socket.on("leave-game",async (gameId)=>{
+    const room = `team-C room-${gameId}`;
+    if(!socket.rooms.has(room) || !socket.user || await isPlayerGaming(socket.user.userId)){
+      return;
+    }
+    socket.leave(room);
+    fetchTurn(gameId).then((data) => {
+      socket.in(`team-C room-` + `${gameId}`).emit("room-update", data);
+    });
+  })
   socket.on("load-game", (gameId, callback) => {
     try{
     fetchTurn(gameId).then((game) => {
@@ -101,7 +112,7 @@ app.get("/retrieveGames", auth, handleRetrieveGames);
 
 app.get("/getGame", auth, handleGetGame);
 app.post("/joinGame", auth, handleJoinGame);
-app.post("/leaveGame", auth, handleLeaveGame.create(socketIO));
+app.post("/leaveGame", auth, handleLeaveGame(socketIO));
 app.post("/createGame", auth, handleCreateGame);
 app.get("/currentGame", auth, handleCurrentGame);
 const db = require("./app/models");

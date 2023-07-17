@@ -6,8 +6,7 @@ const Op = db.Sequelize.Op;
 
 require("dotenv").config()
 
-const handleLeaveGame = (socket) => {
-  return async (req, res, next) => {
+const handleLeaveGame = async (req, res, next) => {
     const playerId = req.user.userId
     const { gameId } = req.body;
     try {
@@ -62,7 +61,6 @@ const handleLeaveGame = (socket) => {
     } catch (e) {
       next(e);
     }
-  }
-};
+  };
 
-module.exports.create = handleLeaveGame;
+module.exports = handleLeaveGame;

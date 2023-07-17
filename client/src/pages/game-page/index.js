@@ -16,15 +16,14 @@ function Game() {
   const canvasRef = useRef(null);
   const [progress, setProgress] = React.useState(0);
   const gameId = useRef(null);
-  let [game, setGame] = useState(null);
+  const [t, setT] = useState(false);
   let [turnUpdate, setturnUpdate] = useState(null);
   const [msg, setMsg] = useState("The game is Loading");
   let diceRef = useRef(null);
   let rollRef = useRef(null);
-  let [timer, setTimer] = useState(Date.now());
   let [lastPlayTime, setLastPlayTime] = useState(Date.now());
-  const [t, setT] = useState(false);
-  const [, forceUpdate] = useReducer((x) => x + 1, 0);
+  let [timer, setTimer] = useState(Date.now());
+  let [game, setGame] = useState(null);
 
   useEffect(() => {
     const headers = {
@@ -95,9 +94,10 @@ function Game() {
 
   const handleRoomUpdate = (gameObject) => {
     console.log(gameObject)
+    console.log(gameObject == game)
+
     if (typeof gameObject === "string") {
       setMsg(gameObject);
-      return;
     } else {
       if (
         gameObject.game_status.toLowerCase() === "pending" &&
@@ -124,6 +124,7 @@ function Game() {
       setGame(gameObject);
     }
   };
+
   function rollDice(elComeOut) {
     var elDiceOne = diceRef?.current;
     if (elDiceOne) {

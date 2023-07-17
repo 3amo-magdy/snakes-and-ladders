@@ -17,7 +17,6 @@ export const subscribeToRoom = (gameId, turnUpdate, roomUpdate) => {
     });
   });
   socket.connect();
-  // loadGame(gameId,roomUpdate);
 };
 
 export const loadGame = (gameId, roomUpdate) => {
@@ -25,4 +24,7 @@ export const loadGame = (gameId, roomUpdate) => {
 };
 export const rollDice = (gameId) => {
   socket.emit("make-move", gameId);
+};
+export const leaveGame = (gameId) => {
+  socket.emit("leave-game", gameId);
 };
