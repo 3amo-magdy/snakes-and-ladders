@@ -54,9 +54,6 @@ const handleLeaveGame = async (req, res, next) => {
           { where: { Id: gameId } }
         );
       }
-      fetchTurn(gameId).then((data) => {
-        socket.to("team-C room-" + String(gameId)).emit('room-update', data)
-      });
       res.status(200).send("Done");
     } catch (e) {
       next(e);

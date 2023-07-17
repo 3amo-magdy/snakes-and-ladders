@@ -286,6 +286,7 @@ function Game() {
       )
       .then((res) => {
         console.log("RESPONSE RECEIVED: ", res);
+        io.leaveGame(gameId);
         window.location.reload(true);
       })
       .catch((err) => {
