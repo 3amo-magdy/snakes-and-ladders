@@ -44,7 +44,9 @@ function Game() {
       });
 
       return ()=>{
-        io.socket.disconnect();
+        if (io.socket.connected){
+          io.socket.disconnect();
+        }
       }
   }, []);
 
